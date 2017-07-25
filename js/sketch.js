@@ -7,17 +7,16 @@ function setup() {
 
 function draw() {
   background("#333333");
-  const lineLength = min(width, height) / 20;
-  const spaceBetween = lineLength * 1.5;
-  for (var x = 0; x < width; x += spaceBetween) {
-    for (var y = 0; y < height; y += spaceBetween) {
-      drawShape(createVector(x, y), spaceBetween, lineLength);
+  const lineLength = min(width, height) / 14;
+  for (var x = 0; x < width; x += lineLength) {
+    for (var y = 0; y < height; y += lineLength) {
+      drawShape(createVector(x, y), lineLength);
     }
   }
 }
 
-function drawShape(center, spaceBetween, lineLength) {
-  var corners = getCorners(center, spaceBetween);
+function drawShape(center, lineLength) {
+  var corners = getCorners(center, lineLength);
   var mousePosition = createVector(mouseX, mouseY);
   var getVectorAtPosition = function(position) {
     return getVector(position, mousePosition, lineLength)
@@ -38,11 +37,11 @@ function getVector(center, position, maxLength) {
   return createVector(center.x + cos(angle) * length, center.y + sin(angle) * length);
 }
 
-function getCorners(center, space) {
+function getCorners(center, length) {
   return [
     createVector(center.x, center.y),
-    createVector(center.x + space, center.y),
-    createVector(center.x + space, center.y + space),
-    createVector(center.x, center.y + space)
+    createVector(center.x + length, center.y),
+    createVector(center.x + length, center.y + length),
+    createVector(center.x, center.y + length)
   ]
 }
