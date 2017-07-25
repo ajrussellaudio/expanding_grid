@@ -4,7 +4,7 @@ function setup() {
 
 function draw() {
   background("#333333");
-  const lineLength = 30;
+  const lineLength = min(width, height) / 20;
   const spaceBetween = lineLength * 1.5;
   for (var x = 0; x < width; x += spaceBetween) {
     for (var y = 0; y < height; y += spaceBetween) {
@@ -27,7 +27,7 @@ function drawShape(x, y, spaceBetween, lineLength) {
 
 function getVertex(x, y, maxLength) {
   var distance = dist(x, y, mouseX, mouseY);
-  var length = constrain(distance, 0, maxLength);
+  var length = constrain(distance, 0, maxLength * 2);
   var angle = atan2(y - mouseY, x - mouseX);
   return createVector(x + cos(angle) * length, y + sin(angle) * length);
 }
