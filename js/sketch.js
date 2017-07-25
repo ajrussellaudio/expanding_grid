@@ -27,7 +27,7 @@ function drawShape(x, y, spaceBetween, lineLength) {
 
 function getVertex(x, y, maxLength) {
   var distance = dist(x, y, mouseX, mouseY);
-  var length = constrain(distance, 0, maxLength * 2);
+  var length = constrain(distance, 0, maxLength);
   var angle = atan2(y - mouseY, x - mouseX);
   return createVector(x + cos(angle) * length, y + sin(angle) * length);
 }
